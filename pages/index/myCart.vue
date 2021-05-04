@@ -38,7 +38,7 @@
 								<view class="bottom">
 									<view class="more"><u-icon name="more-dot-fill" color="rgb(203,203,203)"></u-icon></view>
 									<u-number-box v-model="res.goods_num" :bg-color="bgColor" :color="color" :min="1"
-									:step="step" :disabled="disabled" @change="changeCartNum"></u-number-box>
+									:step="step" :disabled="disabled" @change="changeCartNum(res)"></u-number-box>
 <!-- 									<view class="logistics btn">查看物流</view>
 									<view class="exchange btn">卖了换钱</view>
 									<view class="evaluate btn">评价</view> -->
@@ -157,18 +157,19 @@ export default {
 			})
 		},
 		//修改购物车产品数据
-		changeCartNum(){
+		changeCartNum(e){
+			console.log("修改产品数量:",e,e.goods_num)
 			this.dataList.forEach(ielem=>{
 				ielem.priceSum = parseFloat((ielem.goods_num * ielem.product_uprice).toFixed(2))
-				console.log("修改数量ielem",ielem,ielem.goods_num)
+				// console.log("修改数量ielem",ielem,ielem.goods_num)
 			})
 		},
 		//返回产品首页
 		toIndex(){
-			console.log("toindex")
+			// console.log("toindex")
 			this.$u.route({
 				type:  'navigateTo',
-				params: {"mId":e.product_id},
+				params: {},
 				url: "/pages/index/index",
 				animationType: "slide-in-bottom"
 			});
