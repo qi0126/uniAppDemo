@@ -6,11 +6,20 @@
 					<scroll-view scroll-y style="height: 100%;width: 100%;" @scrolltolower="reachBottom">
 						<view class="page-box">
 							<view class="order" v-for="(res, index) in dataList" :key="res.id">
+
 								<view class="top">
 									<view class="left">
 										<u-icon name="home" :size="30" color="rgb(94,94,94)"></u-icon>
 										<view class="store">{{ res.shop_name }}</view>
 										<u-icon name="arrow-right" color="rgb(203,203,203)" :size="26"></u-icon>
+
+									</view>
+									<view class="right">
+										<u-checkbox @change="checkboxChange(res)"
+											shape="circle"
+											activeColor='#ff9900'
+											v-model="res.checked"
+										></u-checkbox>
 									</view>
 								</view>
 								<view class="item" :key="index">
@@ -54,9 +63,21 @@
 			<view class="hBottom"></view>
 			<view class="navigation">
 				<view class="left">
-					<view class="item" @click="toIndex">
+<!-- 					<view class="item" @click="toIndex">
 						<u-icon name="home" :size="40" :color="$u.color['contentColor']"></u-icon>
 						<view class="text u-line-1">首页</view>
+					</view> -->
+					<view class="item">
+						<u-checkbox
+							shape="circle"
+							activeColor='#ff9900'
+							v-model="allChecked"
+							@change="changeAllChecked"
+						></u-checkbox>
+					</view>
+					<view class="item">
+						<view class="sumTxtOne">金额：{{cartSumObj.allPriceSum}}</view>
+						<view class="sumTxtTwo">数量：{{cartSumObj.num}}</view>
 					</view>
 					<view class="item car">
 						<u-badge class="car-num" :count="cartNum" type="error" :offset="[-3, -6]"></u-badge>
@@ -65,8 +86,7 @@
 					</view>
 				</view>
 				<view class="right">
-					
-					<view class="buy btn u-line-1">立退下单</view>
+					<view class="item buy btn u-line-1">立退下单</view>
 				</view>
 			</view>
 			<u-toast ref="uToast"></u-toast>
@@ -89,6 +109,8 @@ export default {
 			color: '#323233',
 			disabled: false,
 			step: 1,
+			cartSumObj:{num:0,allPriceSum:0},
+			allChecked:true
 		};
 	},
 	onLoad() {
@@ -99,15 +121,20 @@ export default {
 		// 价格小数
 		priceDecimal() {
 			return val => {
-				if (val !== parseInt(val)) return val.slice(-2);
+				if (val !== parseInt(val)) return (val+"").slice(-2);
 				else return '00';
 			};
 		},
 		// 价格整数
 		priceInt() {
 			return val => {
-				if (val !== parseInt(val)) return val.split('.')[0];
-				else return val;
+				
+				if (val !== parseInt(val)){
+					return (val+"").split('.')[0];
+				}
+				else {
+					return val;
+				}
 			};
 		}
 	},
@@ -126,9 +153,11 @@ export default {
 			this.$u.get('/cart').then(res => {
 				// console.log("res:",res.data)
 				let newList = res.data
+				
 				newList.forEach(ielem=>{
 					//算个总价合计
 					ielem.priceSum = parseFloat((ielem.goods_num * ielem.product_uprice).toFixed(2))
+					ielem.checked=true;
 				})
 				this.dataList = newList
 			})
@@ -158,21 +187,70 @@ export default {
 		},
 		//修改购物车产品数据
 		changeCartNum(e){
-			console.log("修改产品数量:",e,e.goods_num)
+			let self =this
+			let params={cart_id:e.cart_id,goods_num:e.goods_num}
+			this.$u.post('/changeCartNumApp',params).then(res => {
+				if(res.code == 200){
+					// console.log("修改产品数量:",e,e.cart_id,e.goods_num)
+					// this.cartNum = res.cartNum
+				}else{
+					this.$refs.uToast.show({
+						title: res.msg,
+						position: 'top',
+						type: 'default',
+					});
+				}
+			
+			})
+			
+			//算产品数量和金额
+			setTimeout(()=>{
+				self.sumDataFun()
+			},20)
+
+		},
+		//算产品数量和金额
+		sumDataFun(){
+			this.cartSumObj={num:0,allPriceSum:0}
 			this.dataList.forEach(ielem=>{
-				ielem.priceSum = parseFloat((ielem.goods_num * ielem.product_uprice).toFixed(2))
+				if(ielem.checked){
+						ielem.priceSum = parseFloat((ielem.goods_num * ielem.product_uprice).toFixed(2))
+						this.cartSumObj.num += parseFloat(ielem.goods_num)
+						this.cartSumObj.allPriceSum += parseFloat(ielem.priceSum)
+				}
+				
 				// console.log("修改数量ielem",ielem,ielem.goods_num)
 			})
+			this.$forceUpdate()
 		},
 		//返回产品首页
 		toIndex(){
 			// console.log("toindex")
 			this.$u.route({
-				type:  'navigateTo',
+				type:  'switchTab',
 				params: {},
-				url: "/pages/index/index",
-				animationType: "slide-in-bottom"
+				url: "/pages/index/index"
 			});
+			
+		},
+		//选择
+		checkboxChange(e){
+			let self = this
+			setTimeout(()=>{
+				self.sumDataFun()
+			},20)
+			
+			// console.log("总计：",this.cartSumObj)
+		},
+		//全选按钮
+		changeAllChecked(){
+			let self = this
+			setTimeout(()=>{
+				self.dataList.forEach(ielem=>{
+					ielem.checked=self.allChecked
+				})
+				self.sumDataFun()
+			},20)
 			
 		}
 	}
@@ -366,5 +444,14 @@ page {
 }
 .hBottom{
 	height:100rpx
+}
+.sumTxtOne{
+	color:#000;
+	font-size:24rpx;
+	font-weight: bold;
+}
+.sumTxtTwo{
+	color:#aaa;
+	font-size:24rpx;
 }
 </style>

@@ -137,6 +137,7 @@
 				if(!this.result.length) this.list[0].checked = true;
 				let theme = index == 0 ? 'primary' : index == 1 ? 'error' : index == 2 ? 'warning' : index == 3 ? 'success' : 'info';
 				this.activeColor = this.$u.color[theme];
+				console.log("着色:",this.activeColor)
 			},
 			// 选中某个复选框时，由checkbox时触发
 			checkboxChange(e) {

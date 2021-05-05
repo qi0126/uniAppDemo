@@ -12,7 +12,7 @@
 			<u-cell-item :title="proDetail.product_detail" value="" :arrow="false">
 			</u-cell-item>
 			<u-cell-item :arrow="false">
-				<u-number-box v-model="proNum" :bg-color="bgColor" :color="color" :min="0"
+				<u-number-box v-model="proNum" :bg-color="bgColor" :color="color" :min="1"
 				:step="step" :disabled="disabled" @change="change" @focus="focus"></u-number-box>
 			</u-cell-item>
 		</u-cell-group>
@@ -27,14 +27,14 @@
 					<u-icon :name="proDetail.flowTF?'star-fill':'star'" :size="40"></u-icon>
 					<view class="text u-line-1">关注</view>
 				</view>
-				<view class="item car">
+				<view class="item car"  @click="toCart">
 					<u-badge class="car-num" :count="cartNum" type="error" :offset="[-3, -6]"></u-badge>
 					<u-icon name="shopping-cart" :size="40" :color="$u.color['contentColor']"></u-icon>
 					<view class="text u-line-1">购物车</view>
 				</view>
 			</view>
 			<view class="right">
-				<view class="cart btn u-line-1">加入购物车</view>
+				<view class="cart btn u-line-1" @click="addCart(proDetail)">加入购物车</view>
 				<view class="buy btn u-line-1">立即购买</view>
 			</view>
 		</view>
@@ -133,7 +133,39 @@ export default {
 		},
 		focus(){
 			
+		},
+		
+		//加入购物车
+		addCart(e){
+			let userInfo = uni.getStorageSync("userInfo")
+			let params = {
+				user_id:userInfo.user_id,
+				product_id:e.product_id,
+				goods_num:this.proNum
+			}
+			this.$u.post('/addCartApp',params).then(res => {
+				if(res.code == 200){
+					this.getCarNum()//购物车数量
+				}else{
+					this.$refs.uToast.show({
+						title: res.msg,
+						position: 'top',
+						type: 'default',
+					});
+				}
+			})
+			
+		},
+		//跳转到购物车页面
+		toCart(){
+			this.$u.route({
+				type:'navigateTo',
+				params: {},
+				url: "/pages/index/myCart",
+				animationType: "slide-in-bottom"
+			});
 		}
+		
 		
 	}
 };
