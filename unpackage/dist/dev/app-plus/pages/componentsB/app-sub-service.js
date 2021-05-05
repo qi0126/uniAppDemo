@@ -1710,7 +1710,7 @@ var components
 try {
   components = {
     uToast: __webpack_require__(/*! @/uview-ui/components/u-toast/u-toast.vue */ 71).default,
-    uSwiper: __webpack_require__(/*! @/uview-ui/components/u-swiper/u-swiper.vue */ 144).default,
+    uSwiper: __webpack_require__(/*! @/uview-ui/components/u-swiper/u-swiper.vue */ 134).default,
     uSubsection: __webpack_require__(/*! @/uview-ui/components/u-subsection/u-subsection.vue */ 187)
       .default
   }
@@ -3322,7 +3322,7 @@ __webpack_require__.r(__webpack_exports__);
 var components
 try {
   components = {
-    uLine: __webpack_require__(/*! @/uview-ui/components/u-line/u-line.vue */ 132).default,
+    uLine: __webpack_require__(/*! @/uview-ui/components/u-line/u-line.vue */ 157).default,
     uSubsection: __webpack_require__(/*! @/uview-ui/components/u-subsection/u-subsection.vue */ 187)
       .default
   }
@@ -5662,7 +5662,7 @@ try {
   components = {
     uCheckboxGroup: __webpack_require__(/*! @/uview-ui/components/u-checkbox-group/u-checkbox-group.vue */ 678)
       .default,
-    uCheckbox: __webpack_require__(/*! @/uview-ui/components/u-checkbox/u-checkbox.vue */ 159)
+    uCheckbox: __webpack_require__(/*! @/uview-ui/components/u-checkbox/u-checkbox.vue */ 149)
       .default,
     uSubsection: __webpack_require__(/*! @/uview-ui/components/u-subsection/u-subsection.vue */ 187)
       .default
@@ -5969,7 +5969,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(__f__) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
 //
 //
 //
@@ -6108,7 +6108,7 @@ var _default =
       if (!this.result.length) this.list[0].checked = true;
       var theme = index == 0 ? 'primary' : index == 1 ? 'error' : index == 2 ? 'warning' : index == 3 ? 'success' : 'info';
       this.activeColor = this.$u.color[theme];
-      __f__("log", "着色:", this.activeColor, " at pages/componentsB/checkbox/index.vue:140");
+      // console.log("着色:",this.activeColor)
     },
     // 选中某个复选框时，由checkbox时触发
     checkboxChange: function checkboxChange(e) {
@@ -6124,7 +6124,6 @@ var _default =
     wrapChange: function wrapChange(index) {
       this.wrap = !index;
     } } };exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/vue-cli-plugin-uni/lib/format-log.js */ 40)["default"]))
 
 /***/ }),
 
@@ -8402,7 +8401,7 @@ try {
     uLazyLoad: __webpack_require__(/*! @/uview-ui/components/u-lazy-load/u-lazy-load.vue */ 124)
       .default,
     uIcon: __webpack_require__(/*! @/uview-ui/components/u-icon/u-icon.vue */ 8).default,
-    uLoadmore: __webpack_require__(/*! @/uview-ui/components/u-loadmore/u-loadmore.vue */ 129)
+    uLoadmore: __webpack_require__(/*! @/uview-ui/components/u-loadmore/u-loadmore.vue */ 154)
       .default
   }
 } catch (e) {

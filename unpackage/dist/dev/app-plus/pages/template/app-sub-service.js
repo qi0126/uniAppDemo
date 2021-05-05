@@ -4866,7 +4866,7 @@ try {
     uTabsSwiper: __webpack_require__(/*! @/uview-ui/components/u-tabs-swiper/u-tabs-swiper.vue */ 471)
       .default,
     uIcon: __webpack_require__(/*! @/uview-ui/components/u-icon/u-icon.vue */ 8).default,
-    uLoadmore: __webpack_require__(/*! @/uview-ui/components/u-loadmore/u-loadmore.vue */ 129)
+    uLoadmore: __webpack_require__(/*! @/uview-ui/components/u-loadmore/u-loadmore.vue */ 154)
       .default
   }
 } catch (e) {

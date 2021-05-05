@@ -7006,7 +7006,7 @@ __webpack_require__.r(__webpack_exports__);
 var components
 try {
   components = {
-    uNumberBox: __webpack_require__(/*! @/uview-ui/components/u-number-box/u-number-box.vue */ 149)
+    uNumberBox: __webpack_require__(/*! @/uview-ui/components/u-number-box/u-number-box.vue */ 139)
       .default,
     uSubsection: __webpack_require__(/*! @/uview-ui/components/u-subsection/u-subsection.vue */ 187)
       .default
@@ -8513,7 +8513,7 @@ var components
 try {
   components = {
     uToast: __webpack_require__(/*! @/uview-ui/components/u-toast/u-toast.vue */ 71).default,
-    uLoadmore: __webpack_require__(/*! @/uview-ui/components/u-loadmore/u-loadmore.vue */ 129)
+    uLoadmore: __webpack_require__(/*! @/uview-ui/components/u-loadmore/u-loadmore.vue */ 154)
       .default,
     uSubsection: __webpack_require__(/*! @/uview-ui/components/u-subsection/u-subsection.vue */ 187)
       .default

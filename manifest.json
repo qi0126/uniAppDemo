@@ -1,6 +1,6 @@
 {
     "name" : "uViewUIDemo01",
-    "appid" : "__UNI__40B0A88",
+    "appid" : "__UNI__9F1D37E",
     "description" : "多平台快速开发的UI框架",
     "versionName" : "1.8.4",
     "versionCode" : "100",
@@ -28,27 +28,26 @@
         "distribute" : {
             "android" : {
                 "permissions" : [
-                    "<uses-permission android:name=\"android.permission.CHANGE_NETWORK_STATE\"/>",
-                    "<uses-permission android:name=\"android.permission.MOUNT_UNMOUNT_FILESYSTEMS\"/>",
-                    "<uses-permission android:name=\"android.permission.READ_CONTACTS\"/>",
-                    "<uses-permission android:name=\"android.permission.VIBRATE\"/>",
-                    "<uses-permission android:name=\"android.permission.READ_LOGS\"/>",
-                    "<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\"/>",
+                    "<uses-feature android:name=\"android.hardware.camera\"/>",
                     "<uses-feature android:name=\"android.hardware.camera.autofocus\"/>",
-                    "<uses-permission android:name=\"android.permission.WRITE_CONTACTS\"/>",
+                    "<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\"/>",
+                    "<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\"/>",
                     "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\"/>",
+                    "<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\"/>",
+                    "<uses-permission android:name=\"android.permission.CALL_PHONE\"/>",
                     "<uses-permission android:name=\"android.permission.CAMERA\"/>",
-                    "<uses-permission android:name=\"android.permission.RECORD_AUDIO\"/>",
+                    "<uses-permission android:name=\"android.permission.CHANGE_NETWORK_STATE\"/>",
+                    "<uses-permission android:name=\"android.permission.CHANGE_WIFI_STATE\"/>",
+                    "<uses-permission android:name=\"android.permission.FLASHLIGHT\"/>",
                     "<uses-permission android:name=\"android.permission.GET_ACCOUNTS\"/>",
                     "<uses-permission android:name=\"android.permission.MODIFY_AUDIO_SETTINGS\"/>",
+                    "<uses-permission android:name=\"android.permission.MOUNT_UNMOUNT_FILESYSTEMS\"/>",
+                    "<uses-permission android:name=\"android.permission.READ_LOGS\"/>",
                     "<uses-permission android:name=\"android.permission.READ_PHONE_STATE\"/>",
-                    "<uses-permission android:name=\"android.permission.CHANGE_WIFI_STATE\"/>",
+                    "<uses-permission android:name=\"android.permission.RECORD_AUDIO\"/>",
+                    "<uses-permission android:name=\"android.permission.VIBRATE\"/>",
                     "<uses-permission android:name=\"android.permission.WAKE_LOCK\"/>",
-                    "<uses-permission android:name=\"android.permission.CALL_PHONE\"/>",
-                    "<uses-permission android:name=\"android.permission.FLASHLIGHT\"/>",
-                    "<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\"/>",
-                    "<uses-feature android:name=\"android.hardware.camera\"/>",
-                    "<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\"/>",
+                    "<uses-permission android:name=\"android.permission.WRITE_CONTACTS\"/>",
                     "<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>"
                 ],
                 "abiFilters" : [ "armeabi-v7a", "arm64-v8a" ]
@@ -59,33 +58,33 @@
             },
             "icons" : {
                 "android" : {
-                    "hdpi" : "unpackage/res/icons/72x72.png",
-                    "xhdpi" : "unpackage/res/icons/96x96.png",
-                    "xxhdpi" : "unpackage/res/icons/144x144.png",
-                    "xxxhdpi" : "unpackage/res/icons/192x192.png"
+                    "hdpi" : "F:/百泰集团/2020项目/文档/img/cityDemo01.png",
+                    "xhdpi" : "F:/百泰集团/2020项目/文档/img/cityDemo01.png",
+                    "xxhdpi" : "F:/百泰集团/2020项目/文档/img/cityDemo01.png",
+                    "xxxhdpi" : "F:/百泰集团/2020项目/文档/img/cityDemo01.png"
                 },
                 "ios" : {
-                    "appstore" : "unpackage/res/icons/1024x1024.png",
+                    "appstore" : "F:/百泰集团/2020项目/文档/img/cityDemo01.png",
                     "ipad" : {
-                        "app" : "unpackage/res/icons/76x76.png",
-                        "app@2x" : "unpackage/res/icons/152x152.png",
-                        "notification" : "unpackage/res/icons/20x20.png",
-                        "notification@2x" : "unpackage/res/icons/40x40.png",
-                        "proapp@2x" : "unpackage/res/icons/167x167.png",
-                        "settings" : "unpackage/res/icons/29x29.png",
-                        "settings@2x" : "unpackage/res/icons/58x58.png",
-                        "spotlight" : "unpackage/res/icons/40x40.png",
-                        "spotlight@2x" : "unpackage/res/icons/80x80.png"
+                        "app" : "F:/百泰集团/2020项目/文档/img/cityDemo01.png",
+                        "app@2x" : "F:/百泰集团/2020项目/文档/img/cityDemo01.png",
+                        "notification" : "F:/百泰集团/2020项目/文档/img/cityDemo01.png",
+                        "notification@2x" : "F:/百泰集团/2020项目/文档/img/cityDemo01.png",
+                        "proapp@2x" : "F:/百泰集团/2020项目/文档/img/cityDemo01.png",
+                        "settings" : "F:/百泰集团/2020项目/文档/img/cityDemo01.png",
+                        "settings@2x" : "F:/百泰集团/2020项目/文档/img/cityDemo01.png",
+                        "spotlight" : "F:/百泰集团/2020项目/文档/img/cityDemo01.png",
+                        "spotlight@2x" : "F:/百泰集团/2020项目/文档/img/cityDemo01.png"
                     },
                     "iphone" : {
-                        "app@2x" : "unpackage/res/icons/120x120.png",
-                        "app@3x" : "unpackage/res/icons/180x180.png",
-                        "notification@2x" : "unpackage/res/icons/40x40.png",
-                        "notification@3x" : "unpackage/res/icons/60x60.png",
-                        "settings@2x" : "unpackage/res/icons/58x58.png",
-                        "settings@3x" : "unpackage/res/icons/87x87.png",
-                        "spotlight@2x" : "unpackage/res/icons/80x80.png",
-                        "spotlight@3x" : "unpackage/res/icons/120x120.png"
+                        "app@2x" : "F:/百泰集团/2020项目/文档/img/cityDemo01.png",
+                        "app@3x" : "F:/百泰集团/2020项目/文档/img/cityDemo01.png",
+                        "notification@2x" : "F:/百泰集团/2020项目/文档/img/cityDemo01.png",
+                        "notification@3x" : "F:/百泰集团/2020项目/文档/img/cityDemo01.png",
+                        "settings@2x" : "F:/百泰集团/2020项目/文档/img/cityDemo01.png",
+                        "settings@3x" : "F:/百泰集团/2020项目/文档/img/cityDemo01.png",
+                        "spotlight@2x" : "F:/百泰集团/2020项目/文档/img/cityDemo01.png",
+                        "spotlight@3x" : "F:/百泰集团/2020项目/文档/img/cityDemo01.png"
                     }
                 }
             }
@@ -95,15 +94,16 @@
     "mp-weixin" : {
         "appid" : "",
         "setting" : {
-            "urlCheck" : true,
-            "es6" : false,
-            "minified" : true,
-            "postcss" : true
+            "urlCheck" : false,
+            "es6" : true,
+            "minified" : false,
+            "postcss" : false
         },
         "optimization" : {
             "subPackages" : true
         },
-        "usingComponents" : true
+        "usingComponents" : true,
+        "permission" : {}
     },
     "mp-alipay" : {
         "usingComponents" : true,

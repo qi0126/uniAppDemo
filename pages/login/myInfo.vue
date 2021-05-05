@@ -53,7 +53,7 @@ export default {
 			userInfo:{},//用户信息
 			changePasTF:false,//修改密码层显示/隐藏
 			exitTF:false,//确认退出弹窗
-			userNumObj:{cartNum:0,historyNum:0,flowNum:0}//用户数量放这个对象
+			userNumObj:{cartNum:0,historyNum:0,flowNum:0},//用户数量放这个对象
 		}
 	},
 	computed: {
@@ -66,14 +66,23 @@ export default {
 			return style;
 		}
 	},
-	created(){
-		// console.log("bbb:",uni.getStorageSync("userInfo"))
-		this.userInfo = uni.getStorageSync("userInfo")
-		this.getCarNum()//购物车数量
-		this.getHistoryNum()//浏览产品数量
-		this.getFlowNum()//关注产品数量
+	onLoad(){
+		this.created_fun()
+	},
+	onPullDownRefresh() {
+		this.created_fun()
+		setTimeout(function () {
+			uni.stopPullDownRefresh();
+		}, 1000);
 	},
 	methods: {
+		created_fun(){
+			// console.log("bbb:",uni.getStorageSync("userInfo"))
+			this.userInfo = uni.getStorageSync("userInfo")
+			this.getCarNum()//购物车数量
+			this.getHistoryNum()//浏览产品数量
+			this.getFlowNum()//关注产品数量
+		},
 		//购物车数量
 		getCarNum(){
 			this.$u.get('/cartNum').then(res => {

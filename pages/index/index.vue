@@ -9,7 +9,7 @@
 					<view class="demo-price">{{ item.product_price }}元</view>
 					<view class="demo-tag">
 						<view class="demo-tag-owner">自营</view>
-						<view class="demo-tag-text">放心购</view>
+						<view :class="item.flowTF?'demo-tag-textS':'demo-tag-text'" @click.stop="flowFun(item)">{{item.flowTF?'取消':'加入'}}关注</view>
 					</view>
 					<view class="demo-shop">{{ item.product_uprice }}</view>
 <!-- 					<view class="u-close">
@@ -24,7 +24,7 @@
 					<view class="demo-price">{{ item.product_price }}元</view>
 					<view class="demo-tag">
 						<view class="demo-tag-owner">自营</view>
-						<view class="demo-tag-text">放心购</view>
+						<view :class="item.flowTF?'demo-tag-textS':'demo-tag-text'" @click.stop="flowFun(item)">{{item.flowTF?'取消':'加入'}}关注</view>
 					</view>
 					<view class="demo-shop">{{ item.product_uprice }}</view>
 <!-- 					<view class="u-close">
@@ -33,7 +33,8 @@
 				</view>
 			</template>
 		</u-waterfall>
-		<u-loadmore bg-color="rgb(240, 240, 240)" :status="loadStatus" @loadmore="created"></u-loadmore>
+		<!-- <u-loadmore bg-color="rgb(240, 240, 240)" :status="loadStatus" @loadmore="created"></u-loadmore> -->
+		<u-toast ref="uToast"></u-toast>
 	</view>
 </template>
 
@@ -60,8 +61,7 @@ export default {
 	methods: {
 		created() {
 			this.$u.get('/home').then(res => {
-				// console.log("res:",res)
-				this.flowList = res
+				this.flowList = res.data
 			})
 			// for (let i = 0; i < 10; i++) {
 			// 	let index = this.$u.random(0, this.list.length - 1);
@@ -87,6 +87,26 @@ export default {
 				animationType: "slide-in-bottom"
 			});
 			// console.log("去产品详情页",e,e.product_id)
+		},
+		//关注产品
+		flowFun(e){
+			this.$u.post('/flowProApp',{product_id:e.product_id}).then(res => {
+				if(res.code == 200){
+					e.flowTF = !e.flowTF
+					this.$refs.uToast.show({
+						title: res.msg,
+						position: 'top',
+						type: 'default',
+					});
+				}else{
+					this.$refs.uToast.show({
+						title: res.msg,
+						position: 'top',
+						type: 'default',
+					});
+				}
+			
+			})
 		}
 	}
 };
@@ -143,6 +163,19 @@ page {
 	border-radius: 50rpx;
 	font-size: 20rpx;
 	line-height: 1;
+}
+.demo-tag-textS {
+	border: 1px solid #FF9900;
+	color: #fff;
+	background:#FF9900 ;
+	margin-left: 10px;
+	border-radius: 50rpx;
+	line-height: 1;
+	padding: 4rpx 14rpx;
+	display: flex;
+	align-items: center;
+	border-radius: 50rpx;
+	font-size: 20rpx;
 }
 
 .demo-tag-text {

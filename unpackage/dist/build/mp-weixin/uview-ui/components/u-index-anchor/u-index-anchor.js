@@ -1,0 +1,10 @@
+(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["uview-ui/components/u-index-anchor/u-index-anchor"],{"01b7":function(t,n,e){"use strict";e.r(n);var u=e("4128"),r=e.n(u);for(var a in u)"default"!==a&&function(t){e.d(n,t,(function(){return u[t]}))}(a);n["default"]=r.a},4128:function(t,n,e){"use strict";Object.defineProperty(n,"__esModule",{value:!0}),n.default=void 0;var u={name:"u-index-anchor",props:{useSlot:{type:Boolean,default:!1},index:{type:String,default:""},customStyle:{type:Object,default:function(){return{}}}},data:function(){return{active:!1,wrapperStyle:{},anchorStyle:{}}},created:function(){this.parent=!1},mounted:function(){this.parent=this.$u.$parent.call(this,"u-index-list"),this.parent&&(this.parent.children.push(this),this.parent.updateData())},computed:{customAnchorStyle:function(){return Object.assign(this.anchorStyle,this.customStyle)}}};n.default=u},"827f":function(t,n,e){"use strict";var u;e.d(n,"b",(function(){return r})),e.d(n,"c",(function(){return a})),e.d(n,"a",(function(){return u}));var r=function(){var t=this,n=t.$createElement,e=(t._self._c,t.__get_style([t.wrapperStyle])),u=t.$u.guid(),r=t.__get_style([t.customAnchorStyle]);t.$mp.data=Object.assign({},{$root:{s0:e,g0:u,s1:r}})},a=[]},bd9b:function(t,n,e){"use strict";e.r(n);var u=e("827f"),r=e("01b7");for(var a in r)"default"!==a&&function(t){e.d(n,t,(function(){return r[t]}))}(a);e("f625");var c,i=e("f0c5"),o=Object(i["a"])(r["default"],u["b"],u["c"],!1,null,"19ccbd83",null,!1,u["a"],c);n["default"]=o.exports},c475:function(t,n,e){},f625:function(t,n,e){"use strict";var u=e("c475"),r=e.n(u);r.a}}]);
+;(global["webpackJsonp"] = global["webpackJsonp"] || []).push([
+    'uview-ui/components/u-index-anchor/u-index-anchor-create-component',
+    {
+        'uview-ui/components/u-index-anchor/u-index-anchor-create-component':(function(module, exports, __webpack_require__){
+            __webpack_require__('543d')['createComponent'](__webpack_require__("bd9b"))
+        })
+    },
+    [['uview-ui/components/u-index-anchor/u-index-anchor-create-component']]
+]);
