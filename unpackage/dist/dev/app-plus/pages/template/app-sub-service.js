@@ -453,7 +453,7 @@ try {
     uIcon: __webpack_require__(/*! @/uview-ui/components/u-icon/u-icon.vue */ 8).default,
     uKeyboard: __webpack_require__(/*! @/uview-ui/components/u-keyboard/u-keyboard.vue */ 397)
       .default,
-    uMessageInput: __webpack_require__(/*! @/uview-ui/components/u-message-input/u-message-input.vue */ 312)
+    uMessageInput: __webpack_require__(/*! @/uview-ui/components/u-message-input/u-message-input.vue */ 302)
       .default
   }
 } catch (e) {
@@ -4866,7 +4866,7 @@ try {
     uTabsSwiper: __webpack_require__(/*! @/uview-ui/components/u-tabs-swiper/u-tabs-swiper.vue */ 471)
       .default,
     uIcon: __webpack_require__(/*! @/uview-ui/components/u-icon/u-icon.vue */ 8).default,
-    uLoadmore: __webpack_require__(/*! @/uview-ui/components/u-loadmore/u-loadmore.vue */ 154)
+    uLoadmore: __webpack_require__(/*! @/uview-ui/components/u-loadmore/u-loadmore.vue */ 367)
       .default
   }
 } catch (e) {
@@ -6855,7 +6855,7 @@ __webpack_require__.r(__webpack_exports__);
 var components
 try {
   components = {
-    uMessageInput: __webpack_require__(/*! @/uview-ui/components/u-message-input/u-message-input.vue */ 312)
+    uMessageInput: __webpack_require__(/*! @/uview-ui/components/u-message-input/u-message-input.vue */ 302)
       .default
   }
 } catch (e) {

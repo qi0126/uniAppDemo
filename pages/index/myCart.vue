@@ -22,7 +22,7 @@
 										></u-checkbox>
 									</view>
 								</view>
-								<view class="item" :key="index">
+								<view class="item" :key="index"  @click="toDetail(res)">
 									<view class="left"><image :src="res.product_img_url" mode="aspectFill"></image></view>
 									<view class="content">
 										<view class="title u-line-2">{{res.product_name}}</view>
@@ -37,7 +37,7 @@
 										<view class="number">x{{res.goods_num}}</view>
 									</view>
 								</view>
-								<view class="total">
+								<view class="total" @click="toDetail(res)">
 									共{{res.goods_num}}件商品 合计:
 									<text class="total-price">
 										￥{{ priceInt(res.priceSum) }}
@@ -259,6 +259,16 @@ export default {
 				self.sumDataFun()
 			},20)
 			
+		},
+		//to产品详情
+		toDetail(e){
+			this.$u.route({
+				type:  'navigateTo',
+				params: {"mId":e.product_id},
+				url: "/pages/index/proDetail",
+				animationType: "slide-in-bottom"
+			});
+			// console.log("去产品详情页",e,e.product_id)
 		}
 	}
 };

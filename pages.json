@@ -96,6 +96,14 @@
 				"enablePullDownRefresh": true
 			}
 		},
+		// 分类
+		{
+			"path": "pages/index/category",
+			"style": {
+				"navigationBarTitleText": "分类",
+				"enablePullDownRefresh": true
+			}
+		},
 		
 		// fullScreen-压窗屏
 		{
@@ -906,6 +914,11 @@
 				"iconPath": "static/uview/example/component.png",
 				"selectedIconPath": "static/uview/example/component_select.png",
 				"text": "首页"
+			},{
+				"pagePath": "pages/index/category",
+				"iconPath": "static/uview/example/min_button.png",
+				"selectedIconPath": "static/uview/example/min_button_select.png",
+				"text": "分类"
 			},{
 				"pagePath": "pages/example/components",
 				"iconPath": "static/uview/example/min_button.png",
