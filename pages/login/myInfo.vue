@@ -192,6 +192,13 @@ export default {
 				url: "/pages/index/myCart",
 				animationType: "slide-in-bottom"
 			});
+			this.$u.route({
+				type: 'switchTab',
+				params: {},
+				url: "/pages/index/myCart",
+				animationType: "slide-in-bottom"
+			});
+			
 		},
 		//跳转到关注产品
 		toMyFlow(){

@@ -11762,6 +11762,13 @@ var _default =
         url: "/pages/index/myCart",
         animationType: "slide-in-bottom" });
 
+      this.$u.route({
+        type: 'switchTab',
+        params: {},
+        url: "/pages/index/myCart",
+        animationType: "slide-in-bottom" });
+
+
     },
     //跳转到关注产品
     toMyFlow: function toMyFlow() {
@@ -17214,6 +17221,13 @@ var _default =
   onLoad: function onLoad() {
     this.getOrderList();
     this.getCarNum(); //购物车数量
+  },
+  onPullDownRefresh: function onPullDownRefresh() {
+    this.getOrderList();
+    this.getCarNum(); //购物车数量
+    setTimeout(function () {
+      uni.stopPullDownRefresh();
+    }, 1000);
   },
   computed: {
     // 价格小数

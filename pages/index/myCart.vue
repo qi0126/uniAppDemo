@@ -117,6 +117,13 @@ export default {
 		this.getOrderList();
 		this.getCarNum()//购物车数量
 	},
+	onPullDownRefresh() {
+		this.getOrderList();
+		this.getCarNum()//购物车数量
+		setTimeout(function () {
+			uni.stopPullDownRefresh();
+		}, 1000);
+	},
 	computed: {
 		// 价格小数
 		priceDecimal() {
