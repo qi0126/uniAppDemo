@@ -924,12 +924,12 @@
 				"selectedIconPath": "static/uview/example/template_select.png",
 				"text": "模板"
 			},	
-			{
-				"pagePath": "pages/index/myCart",
-				"iconPath": "static/uview/example/js_bak.png",
-				"selectedIconPath": "static/uview/example/js_select_bak.png",
-				"text": "购物车"
-			},
+			// {
+			// 	"pagePath": "pages/index/myCart",
+			// 	"iconPath": "static/uview/example/js_bak.png",
+			// 	"selectedIconPath": "static/uview/example/js_select_bak.png",
+			// 	"text": "购物车"
+			// },
 			{
 				"pagePath": "pages/login/myInfo",
 				"iconPath": "static/uview/example/template.png",

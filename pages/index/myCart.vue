@@ -53,7 +53,7 @@
 									<view class="evaluate btn">评价</view> -->
 								</view>
 							</view>
-							<u-loadmore :status="loadStatus[0]" bgColor="#f2f2f2"></u-loadmore>
+							<!-- <u-loadmore :status="loadStatus[0]" bgColor="#f2f2f2"></u-loadmore> -->
 						</view>
 					</scroll-view>
 				</swiper-item>

@@ -33,7 +33,7 @@
 				</view>
 			</template>
 		</u-waterfall>
-		<u-loadmore bg-color="rgb(240, 240, 240)" :status="loadStatus" @loadmore="created"></u-loadmore>
+		<!-- <u-loadmore bg-color="rgb(240, 240, 240)" :status="loadStatus" @loadmore="created"></u-loadmore> -->
 	</view>
 </template>
 
