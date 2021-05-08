@@ -8,6 +8,23 @@
 					bg-color="rgb(250, 250, 250)"
 					@open="open"
 					:disabled="disabled"
+					@click="click"
+					:btn-width="btnWidth"
+					@close="close"
+					:options="options"
+					@content-click="contentClick"
+				>
+					<view class="item u-border-bottom">
+						<!-- 此层wrap在此为必写的，否则可能会出现标题定位错误 -->
+						<view class="title-wrap">
+							<text class="title u-line-2">1111</text>
+						</view>
+					</view>
+				</u-swipe-action>
+				<u-swipe-action
+					bg-color="rgb(250, 250, 250)"
+					@open="open"
+					:disabled="disabled"
 					:index="index"
 					v-for="(item, index) in list"
 					:key="item.id"

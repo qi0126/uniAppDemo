@@ -6,52 +6,60 @@
 					<scroll-view scroll-y style="height: 100%;width: 100%;" @scrolltolower="reachBottom">
 						<view class="page-box">
 							<view class="order" v-for="(res, index) in dataList" :key="res.id">
+								<u-swipe-action
+									bg-color="rgb(250, 250, 250)"
+									:disabled="disabled"
+									@click="click(res,index)"
+									:btn-width="btnWidth"
+									:options="options"
+								>
+									<view class="top">
+										<view class="left">
+											<u-icon name="home" :size="30" color="rgb(94,94,94)"></u-icon>
+											<view class="store">{{ res.shop_name }}</view>
+											<u-icon name="arrow-right" color="rgb(203,203,203)" :size="26"></u-icon>
 
-								<view class="top">
-									<view class="left">
-										<u-icon name="home" :size="30" color="rgb(94,94,94)"></u-icon>
-										<view class="store">{{ res.shop_name }}</view>
-										<u-icon name="arrow-right" color="rgb(203,203,203)" :size="26"></u-icon>
-
-									</view>
-									<view class="right">
-										<u-checkbox @change="checkboxChange(res)"
-											shape="circle"
-											activeColor='#ff9900'
-											v-model="res.checked"
-										></u-checkbox>
-									</view>
-								</view>
-								<view class="item" :key="index"  @click="toDetail(res)">
-									<view class="left"><image :src="res.product_img_url" mode="aspectFill"></image></view>
-									<view class="content">
-										<view class="title u-line-2">{{res.product_name}}</view>
-										<view class="type u-line-2">{{res.product_detail}}</view>
-										<view class="delivery-time">发货时间 </view>
-									</view>
-									<view class="right">
-										<view class="price">
-											￥{{ priceInt(res.product_uprice) }}
-											<text class="decimal">.{{ priceDecimal(res.product_uprice) }}</text>
 										</view>
-										<view class="number">x{{res.goods_num}}</view>
+										<view class="right">
+											<u-checkbox @change="checkboxChange(res)"
+												shape="circle"
+												activeColor='#ff9900'
+												v-model="res.checked"
+											></u-checkbox>
+										</view>
 									</view>
-								</view>
-								<view class="total" @click="toDetail(res)">
-									共{{res.goods_num}}件商品 合计:
-									<text class="total-price">
-										￥{{ priceInt(res.priceSum) }}
-										<text class="decimal">.{{ priceDecimal(res.priceSum) }}</text>
-									</text>
-								</view>
-								<view class="bottom">
-									<view class="more"><u-icon name="more-dot-fill" color="rgb(203,203,203)"></u-icon></view>
-									<u-number-box v-model="res.goods_num" :bg-color="bgColor" :color="color" :min="1"
-									:step="step" :disabled="disabled" @change="changeCartNum(res)"></u-number-box>
-<!-- 									<view class="logistics btn">查看物流</view>
-									<view class="exchange btn">卖了换钱</view>
-									<view class="evaluate btn">评价</view> -->
-								</view>
+									<view class="item" :key="index"  @click="toDetail(res)">
+										<view class="left"><image :src="res.product_img_url" mode="aspectFill"></image></view>
+										<view class="content">
+											<view class="title u-line-2">{{res.product_name}}</view>
+											<view class="type u-line-2">{{res.product_detail}}</view>
+											<view class="delivery-time">发货时间 </view>
+										</view>
+										<view class="right">
+											<view class="price">
+												￥{{ priceInt(res.product_uprice) }}
+												<text class="decimal">.{{ priceDecimal(res.product_uprice) }}</text>
+											</view>
+											<view class="number">x{{res.goods_num}}</view>
+										</view>
+									</view>
+									<view class="total" @click="toDetail(res)">
+										共{{res.goods_num}}件商品 合计:
+										<text class="total-price">
+											￥{{ priceInt(res.priceSum) }}
+											<text class="decimal">.{{ priceDecimal(res.priceSum) }}</text>
+										</text>
+									</view>
+									<view class="bottom">
+										<view class="more"><u-icon name="more-dot-fill" color="rgb(203,203,203)"></u-icon></view>
+										<u-number-box v-model="res.goods_num" :bg-color="bgColor" :color="color" :min="1"
+										:step="step" :disabled="disabled" @change="changeCartNum(res)"></u-number-box>
+	<!-- 									<view class="logistics btn">查看物流</view>
+										<view class="exchange btn">卖了换钱</view>
+										<view class="evaluate btn">评价</view> -->
+									</view>
+								</u-swipe-action>
+								
 							</view>
 							<!-- <u-loadmore :status="loadStatus[0]" bgColor="#f2f2f2"></u-loadmore> -->
 						</view>
@@ -89,6 +97,11 @@
 					<view class="item buy btn u-line-1">立退下单</view>
 				</view>
 			</view>
+			<u-modal ref="uModal" v-model="show" :show-cancel-button="true"
+				:show-title="false" 
+				@confirm="confirm" :content="content"
+			>
+			</u-modal>
 			<u-toast ref="uToast"></u-toast>
 		</view>
 	</view>
@@ -108,9 +121,27 @@ export default {
 			bgColor: "#F2F3F5",
 			color: '#323233',
 			disabled: false,
+			btnWidth: 180,
 			step: 1,
 			cartSumObj:{num:0,allPriceSum:0},
-			allChecked:true
+			allChecked:true,
+			options: [
+				// {
+				// 	text: '收藏',
+				// 	style: {
+				// 		backgroundColor: '#007aff'
+				// 	}
+				// },
+				{
+					text: '删除',
+					style: {
+						backgroundColor: '#dd524d'
+					}
+				}
+			],
+			content: '确认删除购物车中产品?',
+			show:false,
+			delObj:{}
 		};
 	},
 	onLoad() {
@@ -269,6 +300,38 @@ export default {
 				animationType: "slide-in-bottom"
 			});
 			// console.log("去产品详情页",e,e.product_id)
+		},
+		//购物车删除
+		click(e,ind){
+			
+			// console.log("购物车删除")
+			this.delObj = e
+			this.show = true
+		},
+		//确认删除
+		confirm(){
+			let params= {"cart_id":this.delObj.cart_id}
+			this.$u.post('/delCartApp',params).then(res => {
+				if(res.code == 200){
+					// console.log("修改产品数量:",e,e.cart_id,e.goods_num)
+					// this.cartNum = res.cartNum
+					this.getOrderList();
+					this.getCarNum()//购物车数量
+					this.$refs.uToast.show({
+						title: "购物车删除产品成功！",
+						position: 'top',
+						type: 'default',
+					});
+				}else{
+					this.$refs.uToast.show({
+						title: res.msg,
+						position: 'top',
+						type: 'default',
+					});
+				}
+			
+			})
+			console.log("确认删除",this.delObj,params)
 		}
 	}
 };

@@ -5,7 +5,8 @@
 		<u-cell-group>
 			<u-cell-item value="" :title="proDetail.product_name" :arrow="false">
 			</u-cell-item>
-			<u-cell-item value="" :title="'价格：￥'+proDetail.product_uprice?proDetail.product_uprice:0" :arrow="false">
+			<u-cell-item value="" title="价格：" :arrow="false">
+				<span class="priceTxt">{{proDetail.product_uprice?proDetail.product_uprice.toFixed(2):0}}</span>
 			</u-cell-item>
 			<u-cell-item :title="'店铺名称：'+proDetail.shop_name" :value="'地址:'+proDetail.shop_address" :arrow="false">
 			</u-cell-item>
@@ -57,15 +58,24 @@ export default {
 				color: '#323233',
 				disabled: false,
 				step: 1,
+				mId:null //产品ID
 		};
 	},
 	onLoad(e) {
-		this.createFun(e);
+		// console.log("e:",e)
+		this.mId = e.mId
+		this.createFun();
 		this.getCarNum()//购物车数量
 	},
+	onPullDownRefresh() {
+		this.createFun()
+		setTimeout(function () {
+			uni.stopPullDownRefresh();
+		}, 1000);
+	},
 	methods: {
-		createFun(e){
-			this.$u.get('/detail',{mId:e.mId}).then(res => {
+		createFun(){
+			this.$u.get('/detail',{mId:this.mId}).then(res => {
 				if(res.code == 200){
 					res.data.image.forEach(ielem=>{
 						ielem.image = ielem.image_url
@@ -236,6 +246,11 @@ page {
 	position: absolute;
 	top: 32rpx;
 	right: 32rpx;
+}
+.priceTxt{
+	color:#ff9900;
+	font-size:28rpx;
+	font-weight:bold;
 }
 
 .demo-img-wrap {
