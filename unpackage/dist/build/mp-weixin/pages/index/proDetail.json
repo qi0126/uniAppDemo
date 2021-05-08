@@ -1,5 +1,6 @@
 {
   "navigationBarTitleText": "产品详情",
+  "enablePullDownRefresh": true,
   "usingComponents": {
     "u-swiper": "/uview-ui/components/u-swiper/u-swiper",
     "u-cell-group": "/uview-ui/components/u-cell-group/u-cell-group",

@@ -4,7 +4,6 @@
     "myHistory-u-waterfall-left": "/pages/index/myHistory-u-waterfall-left",
     "myHistory-u-waterfall-right": "/pages/index/myHistory-u-waterfall-right",
     "u-waterfall": "/uview-ui/components/u-waterfall/u-waterfall",
-    "u-lazy-load": "/uview-ui/components/u-lazy-load/u-lazy-load",
-    "u-loadmore": "/uview-ui/components/u-loadmore/u-loadmore"
+    "u-lazy-load": "/uview-ui/components/u-lazy-load/u-lazy-load"
   }
 }

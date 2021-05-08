@@ -1,16 +1,17 @@
 {
   "pages": [
+    "pages/index/index",
     "pages/example/components",
     "uview-ui/components/u-avatar-cropper/u-avatar-cropper",
     "pages/example/js",
     "pages/example/template",
     "pages/login/login",
-    "pages/login/myInfo",
-    "pages/index/index",
+    "pages/login/myInfo",    
     "pages/index/proDetail",
     "pages/index/myCart",
     "pages/index/myFlow",
     "pages/index/myHistory",
+    "pages/index/category",
     "uview-ui/components/u-full-screen/u-full-screen"
   ],
   "subPackages": [
@@ -165,22 +166,10 @@
         "text": "首页"
       },
       {
-        "pagePath": "pages/example/components",
-        "iconPath": "static/uview/example/component.png",
-        "selectedIconPath": "static/uview/example/component_select.png",
-        "text": "组件"
-      },
-      {
-        "pagePath": "pages/example/js",
-        "iconPath": "static/uview/example/js.png",
-        "selectedIconPath": "static/uview/example/js_select.png",
-        "text": "工具"
-      },
-      {
-        "pagePath": "pages/example/template",
-        "iconPath": "static/uview/example/template.png",
-        "selectedIconPath": "static/uview/example/template_select.png",
-        "text": "模板"
+        "pagePath": "pages/index/category",
+        "iconPath": "static/uview/example/min_button.png",
+        "selectedIconPath": "static/uview/example/min_button_select.png",
+        "text": "分类"
       },
       {
         "pagePath": "pages/login/myInfo",
@@ -200,5 +189,7 @@
       ]
     }
   },
-  "usingComponents": {}
+  "permission": {},
+  "usingComponents": {},
+  "sitemapLocation": "sitemap.json"
 }

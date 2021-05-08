@@ -5,6 +5,6 @@
     "index-u-waterfall-right": "/pages/index/index-u-waterfall-right",
     "u-waterfall": "/uview-ui/components/u-waterfall/u-waterfall",
     "u-lazy-load": "/uview-ui/components/u-lazy-load/u-lazy-load",
-    "u-loadmore": "/uview-ui/components/u-loadmore/u-loadmore"
+    "u-toast": "/uview-ui/components/u-toast/u-toast"
   }
 }
